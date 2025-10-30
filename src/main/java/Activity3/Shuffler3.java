@@ -52,6 +52,10 @@ public class Shuffler3 {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int mid = values.length / 2;
+		int[] left = new int[mid];
+		int[] right = new int[values.length - 1 - mid];
+		
 	}
 
 	/**
