@@ -54,8 +54,18 @@ public class Shuffler3 {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		int mid = values.length / 2;
 		int[] left = new int[mid];
-		int[] right = new int[values.length - 1 - mid];
+		int[] right = new int[values.length - mid];
+		for(int i = 0; i < mid; i++) {
+			left[i] = values[i];
+		}
+		for(int j = mid; j < values.length; j++) {
+			right[j - mid] = values[j];
+		}
 		
+		for(int i = 0; i < left.length; i++)
+			values[2 * i] = left[i];
+		for(int j = 0; j < right.length; j++)
+			values[2 * j + 1] = right[j];
 	}
 
 	/**
@@ -71,5 +81,22 @@ public class Shuffler3 {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		
+		int[] result = new int[values.length];
+		int ind = 0;
+		
+		while(values.length > 0) {
+			int select = (int) (Math.random() * (values.length));
+			result[ind++] = values[select];
+			int[] left = new int[ind];
+			int[] right = new int[values.length - ind];
+			System.arraycopy(values, 0, left, 0, left.length);
+			System.arraycopy(values, ind + 1, right, 0, right.length);
+			
+			values = new int[left.length + right.length];
+			System.arraycopy(left, 0, values, 0, left.length);
+			System.arraycopy(right, 0, values, left.length, right.length);
+		}
+		
 	}
 }
