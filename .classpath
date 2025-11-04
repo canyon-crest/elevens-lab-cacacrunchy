@@ -37,5 +37,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/seaso/OneDrive/Documents/CSA/elevens-lab-cacacrunchy/src/main/java/Activity6/Elevens.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

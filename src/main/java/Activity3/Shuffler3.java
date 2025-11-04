@@ -1,4 +1,7 @@
 package Activity3;
+
+import java.util.Arrays;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -41,6 +44,12 @@ public class Shuffler3 {
 			System.out.println();
 		}
 		System.out.println();
+		
+		System.out.println(arePermutations(values1, values2));
+		
+		for(int i = 0; i <= 9; i++) {
+			System.out.println(flip());
+		}
 	}
 
 
@@ -82,21 +91,34 @@ public class Shuffler3 {
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		
-		int[] result = new int[values.length];
-		int ind = 0;
-		
-		while(values.length > 0) {
-			int select = (int) (Math.random() * (values.length));
-			result[ind++] = values[select];
-			int[] left = new int[ind];
-			int[] right = new int[values.length - ind];
-			System.arraycopy(values, 0, left, 0, left.length);
-			System.arraycopy(values, ind + 1, right, 0, right.length);
+		for(int i = values.length - 1; i > 0; i--) {
+			int rand = (int) (Math.random() * (i + 1));
+			int temp = values[i];
 			
-			values = new int[left.length + right.length];
-			System.arraycopy(left, 0, values, 0, left.length);
-			System.arraycopy(right, 0, values, left.length, right.length);
+			values[i] = values[rand];
+			values[rand] = temp;
 		}
 		
+	}
+	
+	public static String flip() {
+		if((int) (Math.random() * (2+1)) != 2)
+			return "heads";
+		return "tails";
+	}
+	
+	public static boolean arePermutations(int[] a1, int[] a2) {
+		int l1 = a1.length;
+		if(l1 == a2.length) {
+			Arrays.sort(a1);
+			Arrays.sort(a2);
+			for(int i = 0; i < l1; i++) {
+				if(a1[i] != a2[i])
+					return false;
+			}
+			return true;
+		}
+		
+		return false;
 	}
 }
